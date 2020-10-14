@@ -11,4 +11,4 @@ IF "%VARSINITIALIZED%"=="" CALL "%current_dir%vcvarsinit.bat"
 IF NOT EXIST "%build_dir%" MKDIR "%build_dir%"
 DEL /Q "%build_dir%*"
 
-csc -out:"%build_dir%%executable_name%" "%src_dir%Program.cs"
+csc -out:"%build_dir%%executable_name%" -recurse:"%src_dir%*.cs"
