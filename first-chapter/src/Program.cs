@@ -8,6 +8,10 @@ namespace Searchengine
         public static void Main(string[] args)
         {
 
+            if(args.Length != 1) {
+                Console.WriteLine("usage: Program.exe <filepath>");
+            }
+
             string filename = args[0];
             Document document;
             DocumentReader documentReader = new DocumentReader(filename);
