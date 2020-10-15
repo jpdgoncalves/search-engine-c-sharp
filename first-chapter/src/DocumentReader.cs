@@ -11,6 +11,7 @@ namespace Searchengine
         private string title;
         private string date;
         private string body;
+        private long docID;
 
         public string Title
         {
@@ -27,23 +28,29 @@ namespace Searchengine
             get { return body; }
         }
 
-        public Document(string title, string date, string body)
+        public long DocID
+        {
+            get { return docID; }
+        }
+
+        public Document(string title, string date, string body, long docID)
         {
             this.title = title;
             this.date = date;
             this.body = body;
+            this.docID = docID;
         }
 
         public override string ToString()
         {
-            return $"title: {title}\n date: {date}\n body: {body}\n";
+            return $"{title} {date} {body}";
         }
 
     }
 
     class DocumentReader
     {
-
+        private static long docIDCounter = 0;
         private StreamReader streamReader;
         private ReaderState readerState;
         private enum ReaderState
@@ -84,7 +91,8 @@ namespace Searchengine
             if (this.readerState == ReaderState.READ_BODY)
             {
                 this.readerState = ReaderState.READY;
-                document = new Document(title, date, body);
+                document = new Document(title, date, body, DocumentReader.docIDCounter);
+                DocumentReader.docIDCounter++;
             }
 
             return document;
