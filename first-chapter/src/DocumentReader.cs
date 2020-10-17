@@ -95,6 +95,11 @@ namespace Searchengine
                 DocumentReader.docIDCounter++;
             }
 
+            if (this.readerState == ReaderState.DONE && this.streamReader != null) {
+                this.streamReader.Close();
+                this.streamReader = null;
+            }
+
             return document;
         }
 

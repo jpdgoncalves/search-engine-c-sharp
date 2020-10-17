@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Searchengine
 {
@@ -21,6 +22,7 @@ namespace Searchengine
 
     class Tokeniser
     {
+        private static Regex characterFilter = new Regex(@"[-:;,.?!()\s]+");
         private Queue<string> documentCorpus;
         private Document document;
         public Document Document {
@@ -36,13 +38,23 @@ namespace Searchengine
         public Token GetToken() {
             Queue<string> corpus = this.documentCorpus;
 
-            if(corpus.Count > 0) {
+            while (corpus.Count > 0) {
                 string term = corpus.Dequeue();
                 long docID = this.document.DocID;
+
+                //Replace all whitespaces, commas etc with nothing
+                term = Tokeniser.characterFilter.Replace(term, "");
+                //Lowercase terms
+                term = term.ToLower();
+                //Filter out terms with less than or equal to 3 characters
+                if(term.Length <= 3) {
+                    continue;
+                }
+
                 return new Token(docID, term);
-            } else {
-                return null;
             }
+
+            return null;
         }
     }
 }
