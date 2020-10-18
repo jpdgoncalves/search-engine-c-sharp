@@ -2,7 +2,9 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace Searchengine
+using Searchengine.Tokenisers;
+
+namespace Searchengine.Indexers
 {
     class IndexFile
     {

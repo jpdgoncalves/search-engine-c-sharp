@@ -1,5 +1,9 @@
 using System;
 
+using Searchengine.Tokenisers;
+using Searchengine.DocumentReaders;
+using Searchengine.Indexers;
+
 namespace Searchengine
 {
     class Program
@@ -18,7 +22,8 @@ namespace Searchengine
 
             Document document;
             Token token;
-            Tokeniser tokeniser = new Tokeniser();
+            
+            ITokeniser tokeniser = new TokeniserFilter(new SimpleTokeniser());
             DocumentReader documentReader = new DocumentReader(filename);
             IndexFile indexFile = new IndexFile(indexpath);
             Indexer indexer = new Indexer();
@@ -26,7 +31,7 @@ namespace Searchengine
 
             while ((document = documentReader.ReadDocument()) != null)
             {
-                tokeniser.Document = document;
+                tokeniser.SetDocument(document);
                 while((token = tokeniser.GetToken()) != null) {
                     //Console.WriteLine(token);
                     indexer.index(token);
