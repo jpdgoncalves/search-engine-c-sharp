@@ -2,7 +2,7 @@ using SearchEngine.Documents;
 
 namespace SearchEngine.Tokenisers {
 
-    abstract class TokeniserDecorator : ITokeniser {
+    public abstract class TokeniserDecorator : ITokeniser {
 
         private ITokeniser tokeniser;
         public TokeniserDecorator(ITokeniser tokeniser) {

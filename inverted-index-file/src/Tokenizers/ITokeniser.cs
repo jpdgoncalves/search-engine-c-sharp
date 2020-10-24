@@ -2,7 +2,7 @@ using SearchEngine.Documents;
 
 namespace SearchEngine.Tokenisers
 {
-    interface ITokeniser
+    public interface ITokeniser
     {
         void SetDocument(Document document);   
         Token GetToken();

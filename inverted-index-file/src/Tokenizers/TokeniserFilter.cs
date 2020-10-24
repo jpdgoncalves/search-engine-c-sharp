@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 namespace SearchEngine.Tokenisers
 {
 
-    class TokeniserFilter : TokeniserDecorator
+    public class TokeniserFilter : TokeniserDecorator
     {
         private static Regex characterFilter = new Regex(@"[-:;,.?!()\s]+");
         

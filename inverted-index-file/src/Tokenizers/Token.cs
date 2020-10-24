@@ -1,7 +1,7 @@
 
 namespace SearchEngine.Tokenisers
 {
-    class Token
+    public class Token
     {
         public string Term { get; set; }
         public long DocID { get; set; }

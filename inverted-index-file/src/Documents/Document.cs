@@ -1,7 +1,7 @@
 
 namespace SearchEngine.Documents
 {
-    class Document
+    public class Document
     {
 
         private string title;

@@ -4,7 +4,7 @@ using SearchEngine.Documents;
 
 namespace SearchEngine.Tokenisers
 {
-    class SimpleTokeniser : ITokeniser {
+    public class SimpleTokeniser : ITokeniser {
 
         private Document document;
         private Queue<string> documentCorpus = new Queue<string>();

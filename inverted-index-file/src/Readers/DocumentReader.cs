@@ -7,7 +7,7 @@ using SearchEngine.Documents;
 
 namespace SearchEngine.Readers
 {
-    class DocumentReader
+    public class DocumentReader
     {
         private static long docIDCounter = 0;
         private StreamReader streamReader;
